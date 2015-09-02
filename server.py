@@ -5,16 +5,32 @@ from twilio.rest import TwilioRestClient
 from uwsgidecorators import *
 import requests
 import datetime
-import pytz
 import secrets
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client.test
     
 twil_client = TwilioRestClient(secrets.twil_acct, secrets.twil_token)
+
 app=Flask(__name__)
 
 
 @app.route('/')
 def home():
     return render_template('index.html')
+
+
+def store_handle(name, phone, handle):
+    
+    result = db.restaurants.insert_one(
+                                        { 
+                                            'name': name
+                                            'phone': phone
+                                            'handle': handle
+                                        }
+                                    )
+
 
 def send_quote():
     r = requests.get('http://api.theysaidso.com/qod.json')
