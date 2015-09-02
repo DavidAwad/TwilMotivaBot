@@ -13,7 +13,7 @@ send a text to the soon-to-be happy camper.
 
 To add it to your crontab for the correctly timed script execution, simply type `crontab -e` and add the following. 
 ```
-* 09 * * * /home/david/TwilMotivaBot/server.py
+00 09 * * * /home/david/TwilMotivaBot/server.py
 ```
 Then it should scrape the entire database of twitter users and send the texts to them. 
 
