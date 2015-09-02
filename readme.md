@@ -17,10 +17,15 @@ To add it to your crontab for the correctly timed script execution, simply type 
 ```
 Then it should scrape the entire database of twitter users and send the texts to them. 
 
+you can make sure it's working by checking crontab. 
+`crontab -l` 
+
 ## Potential research use case. 
 Does this affect a person's pschology? why not find out for yourself?
 [Analyze their psychology over time using twitter after you set this up for them](https://github.com/DavidAwad/deTweector)
 
+### resources 
+[crontab](http://www.thegeekstuff.com/2009/06/15-practical-crontab-examples/)
 
 
 **\#yolo**
