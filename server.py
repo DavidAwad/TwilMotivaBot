@@ -10,7 +10,7 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client.test
-    
+
 twil_client = TwilioRestClient(secrets.twil_acct, secrets.twil_token)
 
 app=Flask(__name__)
@@ -22,9 +22,8 @@ def home():
 
 
 def store_handle(name, phone, handle):
-    
     result = db.restaurants.insert_one(
-                                        { 
+                                        {
                                             'name': name
                                             'phone': phone
                                             'handle': handle
@@ -34,12 +33,12 @@ def store_handle(name, phone, handle):
 
 def send_quote():
     r = requests.get('http://api.theysaidso.com/qod.json')
-    
+
     # decompose JSON for quote
     quote = str(r.json()['contents']['quotes'][0]['quote'])
     # decompose JSON for author
     author = str(r.json()['contents']['quotes'][0]['author'])
-    
+
 
     # Twilio sends the user a text message thanking them.
     # twil_client.messages.create( to="+1 732-925-4874", from_="+1 732-479-1418", body="#powerthrough" )
